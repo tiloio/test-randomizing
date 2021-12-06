@@ -68,7 +68,7 @@ const melaniaGates = freezeMerge(bill, { firstName: 'Melania', gender: 'female' 
 ```
 
 More complete examples in the `./examples` directory:
-- NodeJS TypeScript [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/examples/nodejs-ts)
+- NodeJS TypeScript [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts)
 
 ## License
 
