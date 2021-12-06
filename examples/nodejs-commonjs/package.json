@@ -6,6 +6,6 @@
   "license": "MIT",
   "devDependencies": {
     "faker": "5.5.3",
-    "test-randomizing": "0.1.0"
+    "test-randomizing": "0.1.1"
   }
 }

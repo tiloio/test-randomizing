@@ -4,9 +4,13 @@
   "main": "index.js",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "build": "tsc index.ts",
+    "start": "npm run build && node index.js"
+  },
   "devDependencies": {
     "faker": "5.5.3",
-    "test-randomizing": "0.1.0",
+    "test-randomizing": "0.1.1",
     "typescript": "4.5.2"
   }
 }

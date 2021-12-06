@@ -15,3 +15,11 @@ const randomPerson: RandomFn<Person> = (override?) =>
         gender: name.gender(),
         title: name.title(),
     }, override);
+
+const steve = randomPerson({ lastName: 'Jobs', gender: 'male' });
+const bill = randomPerson({ lastName: 'Gates', gender: 'male' });
+console.log(steve);
+console.log(bill);
+
+const melania = freezeMerge(bill, { firstName: 'Melania', gender: 'female' });
+console.log(melania);

@@ -42,6 +42,29 @@ const randomPerson: RandomFn<Person> = (override?) =>
         gender: name.gender(),
         title: name.title(),
     }, override);
+
+const steveJobs = randomPerson({ lastName: 'Jobs', gender: 'male' });
+// {
+//  firstName: 'Barney', // random Value
+//  lastName: 'Jobs',
+//  gender: 'male',
+//  title: 'Internal Functionality Strategist' // random Value
+// }
+const billGates = randomPerson({ lastName: 'Gates', gender: 'male' });
+// {
+//  firstName: 'Sage', // random Value
+//  lastName: 'Gates',
+//  gender: 'male',
+//  title: 'International Optimization Representative' // random Value
+// }
+
+const melaniaGates = freezeMerge(bill, { firstName: 'Melania', gender: 'female' });
+// {
+//  firstName: 'Melania',
+//  lastName: 'Gates',
+//  gender: 'female',
+//  title: 'International Optimization Representative' // random Value
+// }
 ```
 
 More complete examples in the `./examples` directory:
