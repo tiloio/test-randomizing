@@ -12,63 +12,164 @@ Test randomizing helps you to build randomized objects for your tests.
 
 ## 🏗 Install
 
+### Deno ([deno.land](https://deno.land/x/test_randomizing@0.2.0))
+
+```javascript
+import {
+  freezeMerge,
+  merge,
+  RandomFn,
+} from "https://deno.land/x/test_randomizing@0.2.0";
+```
+
+### Node.js ([npm.js](https://www.npmjs.com/package/test-randomizing))
+
 ```sh
 npm install --save-dev test-randomizing
+# or
+yarn add --dev test-randomizing
 ```
 
 ## 🤷🏽‍♂️ How to use
 
 You can use test randomizing in JavaScript and TypeScript projects.
 
-We recommend using a library (like [faker.js](https://github.com/marak/Faker.js/)) to create randomized objects.
+We recommend using a library (like
+[faker.js](https://github.com/marak/Faker.js/) or deno port
+[deno_faker](https://deno.land/x/deno_faker@v1.0.3)) to create randomized
+objects.
 
-Typescript example:
+Deno example
+[`./examples/deno`](https://github.com/tiloio/test-randomizing/tree/main/examples/deno):
 
 ```typescript
-import { RandomFn, freezeMerge } from "test-randomizing";
-import { name } from "faker";
+import {
+  DeepPartial,
+  freezeMerge,
+  RandomFn,
+} from "https://deno.land/x/test_randomizing@0.2.1/mod.ts";
+import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
+import { assertEquals } from "https://deno.land/std@0.119.0/testing/asserts.ts";
 
+// Implementation
+const generateEmail = (person: Person) => {
+  if (!person.companyName || (!person.firstName && !person.lastName)) {
+    return undefined;
+  }
+
+  return `${person.firstName}.${person.lastName}@${person.companyName}.com`;
+};
+
+// Types
 type Person = {
-    firstName: string;
-    lastName: string;
-    gender: string;
-    title: string;
-}
+  firstName: string;
+  lastName: string;
+  companyName: string;
+};
 
-const randomPerson: RandomFn<Person> = (override?) =>
-    freezeMerge({
-        firstName: name.firstName(),
-        lastName: name.lastName(),
-        gender: name.gender(),
-        title: name.title(),
-    }, override);
+// Test code
+const randomPerson: RandomFn<Person> = (override?: DeepPartial<Person>) =>
+  freezeMerge({
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    companyName: faker.company.companyName(),
+  }, override);
 
-const steveJobs = randomPerson({ lastName: 'Jobs', gender: 'male' });
-// {
-//  firstName: 'Barney', // random Value
-//  lastName: 'Jobs',
-//  gender: 'male',
-//  title: 'Internal Functionality Strategist' // random Value
-// }
-const billGates = randomPerson({ lastName: 'Gates', gender: 'male' });
-// {
-//  firstName: 'Sage', // random Value
-//  lastName: 'Gates',
-//  gender: 'male',
-//  title: 'International Optimization Representative' // random Value
-// }
+Deno.test("consist of firstname.lastname@companyname.com", () => {
+  const person = randomPerson({
+    firstName: "steve",
+    lastName: "jobs",
+    companyName: "apple",
+  });
 
-const melaniaGates = freezeMerge(bill, { firstName: 'Melania', gender: 'female' });
-// {
-//  firstName: 'Melania',
-//  lastName: 'Gates',
-//  gender: 'female',
-//  title: 'International Optimization Representative' // random Value
-// }
+  const email = generateEmail(person);
+
+  assertEquals(email, "steve.jobs@apple.com");
+});
+
+Deno.test("returns undefined if firstName and lastName is empty", () => {
+  const person = randomPerson({ firstName: "", lastName: "" });
+
+  const email = generateEmail(person);
+
+  assertEquals(email, undefined);
+});
+
+Deno.test("returns undefined if companyName is empty", () => {
+  const person = randomPerson({ companyName: "" });
+
+  const email = generateEmail(person);
+
+  assertEquals(email, undefined);
+});
+```
+
+Typescript Node.js example
+[`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts):
+
+```typescript
+import { DeepPartial, freezeMerge, RandomFn } from "test-randomizing";
+import { company, name } from "faker";
+
+// Implementation
+const generateEmail = (person: Person) => {
+  if (!person.companyName || (!person.firstName && !person.lastName)) {
+    return undefined;
+  }
+
+  return `${person.firstName}.${person.lastName}@${person.companyName}.com`;
+};
+
+// Types
+type Person = {
+  firstName: string;
+  lastName: string;
+  companyName: string;
+};
+
+// Test code
+const randomPerson: RandomFn<Person> = (override?: DeepPartial<Person>) =>
+  freezeMerge({
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    companyName: faker.company.companyName(),
+  }, override);
+
+test("consist of firstname.lastname@companyname.com", () => {
+  const person = randomPerson({
+    firstName: "steve",
+    lastName: "jobs",
+    companyName: "apple",
+  });
+
+  const email = generateEmail(person);
+
+  expect(email).toEqual("steve.jobs@apple.com");
+});
+
+test("returns undefined if firstName and lastName is empty", () => {
+  const person = randomPerson({ firstName: "", lastName: "" });
+
+  const email = generateEmail(person);
+
+  expect(email).toBeUndefined();
+});
+
+test("returns undefined if companyName is empty", () => {
+  const person = randomPerson({ companyName: "" });
+
+  const email = generateEmail(person);
+
+  expect(email).toBeUndefined();
+});
 ```
 
 More complete examples in the `./examples` directory:
-- NodeJS TypeScript [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts)
+
+- NodeJS TypeScript
+  [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts)
+- Deno
+  [`./examples/deno`](https://github.com/tiloio/test-randomizing/tree/main/examples/deno)
 
 ## License
 

@@ -1,13 +1,15 @@
 import { build } from "https://deno.land/x/dnt/mod.ts";
 
 await build({
-  entryPoints: ["./src/index.ts"],
+  entryPoints: ["./mod.ts"],
+  rootTestDir: "./src",
   outDir: "./npm",
   package: {
     // package.json properties
     name: "test-randomizing",
     version: Deno.args[0],
-    description: "Test Randomizing helps you to build randomized objects or class instances for your tests.",
+    description:
+      "Test Randomizing helps you to build randomized objects or class instances for your tests.",
     license: "MIT",
     repository: {
       type: "git",
