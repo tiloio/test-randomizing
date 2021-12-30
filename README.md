@@ -75,3 +75,11 @@ More complete examples in the `./examples` directory:
 MIT License
 
 Copyright (c) 2021 Ti/o
+
+# Development
+
+Use alias `drake` to run all commands like `drake test` and `drake build`.
+
+```sh
+alias drake="deno run -A Drakefile.ts"
+```
