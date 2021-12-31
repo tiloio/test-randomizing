@@ -1,7 +1,3 @@
-[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/test_randomizing)
-[![deno doc badge](https://doc.deno.land/badge.svg)](https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts)
-[![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
-
 <h1 align="center">
   test-randomizing
 </h1>
