@@ -3,10 +3,10 @@ import { DeepPartial } from "./types/deep-partial.ts";
 
 /**
  * Deeply merges and optonally freezes (with Object.freeze()) two objects into one.
- * 
+ *
  * @param sourceObject The object which has all properties.
  * @param overrideObject The object which has a subset of the properties of the source object.
- * @param {boolean} [freeze=false]  
+ * @param {boolean} [freeze=false]
  * @returns A object with all attributes from the override object and the rest of the soruce object, optional deeply freezed.
  */
 export const merge = <T>(
