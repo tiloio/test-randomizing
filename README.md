@@ -1,3 +1,5 @@
+ [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/test_randomizing)
+
 # test-randomizing
 
 Test randomizing helps you to build randomized objects for your tests.
