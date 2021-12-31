@@ -1,4 +1,5 @@
  [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/test_randomizing)
+ [![deno doc badge](https://doc.deno.land/badge.svg)](https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts)
 
 # test-randomizing
 
