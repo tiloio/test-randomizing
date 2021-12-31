@@ -6,16 +6,25 @@ const version = eggJson.version;
 
 const install = [`deno install -Af --unstable https://x.nest.land/eggs@0.3.10/eggs.ts`];
 const test = `deno test ${srcDir}`;
+const testDenoExample = `deno test ./examples/deno`;
+const testNpm = `npm --prefix npm test`;
 const lint = `deno lint ${srcDir}`;
 const fmt = `deno fmt ${srcDir}`;
-const publishNest = `egg publish`;
-const publishNestPatch = `egg publish --bump patch`;
+const releaseNest = `eggs publish`;
+const releaseNestPatch = `eggs publish --release-type patch`;
 const buildNpm = `deno run -A ./build_npm.ts ${version}`;
 const publishNpm = `cd ./npm && npm publish`;
 
 const check = {
   cmd: {
-    pll: [test, fmt, lint],
+    pll: [test, testDenoExample, fmt, lint],
+  },
+  gitHook: "pre-commit",
+};
+
+const checkAll = {
+  cmd: {
+    pll: [test, testDenoExample, fmt, lint, [buildNpm, testNpm]],
   },
   gitHook: "pre-commit",
 };
@@ -24,6 +33,8 @@ export default <ScriptsConfiguration>{
   scripts: {
     install,
     test,
+    testNpm,
+    testDenoExample,
     testWatch: {
       cmd: test,
       watch: true,
@@ -31,11 +42,11 @@ export default <ScriptsConfiguration>{
     lint,
     fmt,
     check,
+    checkAll,
     buildNpm,
     publishNpm,
-    releaseNpm: [check, buildNpm, publishNpm],
-    publishNest,
-    release: [publishNest, buildNpm, publishNpm],
-    releasePatch: [publishNestPatch, buildNpm, publishNpm],
+    releaseNpm: [check, buildNpm, testNpm, publishNpm],
+    releaseNestPatch: [releaseNestPatch],
+    releaseNest: [releaseNest],
   },
 };

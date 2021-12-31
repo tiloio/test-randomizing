@@ -2,9 +2,9 @@ import {
   DeepPartial,
   freezeMerge,
   RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.0/mod.ts"; 
-// or via deno.land "https://deno.land/x/test_randomizing@0.4.0/mod.ts"
-// or via Arweave "https://arweave.net/EQhts80yFWrBc7dZBpauJyD9J4sRDmHl2vlUSJKr_rQ/mod.ts"
+} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts"; 
+// or via deno.land "https://deno.land/x/test_randomizing@0.4.1/mod.ts"
+// or via Arweave "https://arweave.net/S_ht0jVRH-4Z-LmwEWSI5q0d6jgB8y-j2MLP73h_pnI/mod.ts"
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 import { assertEquals } from "https://deno.land/x/std@0.119.0/testing/asserts.ts";
 import { generateEmail } from "./generate-email.ts";

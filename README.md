@@ -36,13 +36,13 @@ import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.0/mod.ts";
+} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts";
 // or
 import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://deno.land/x/test_randomizing@0.4.0/mod.ts";
+} from "https://deno.land/x/test_randomizing@0.4.1/mod.ts";
 ```
 
 ### Node.js ([npm.js](https://www.npmjs.com/package/test-randomizing))
@@ -70,7 +70,7 @@ import {
   DeepPartial,
   freezeMerge,
   RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.0/mod.ts";
+} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts";
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 import { assertEquals } from "https://deno.land/std@0.119.0/testing/asserts.ts";
 
