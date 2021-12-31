@@ -12,14 +12,20 @@ Test randomizing helps you to build randomized objects for your tests.
 
 ## 🏗 Install
 
-### Deno ([deno.land](https://deno.land/x/test_randomizing@0.2.0))
+### Deno ([nest.land](https://nest.land/package/test_randomizing) and [deno.land](https://deno.land/x/test_randomizing))
 
 ```javascript
 import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://deno.land/x/test_randomizing@0.2.0";
+} from "https://x.nest.land/test_randomizing@0.4.0/mod.ts";
+// or
+import {
+  freezeMerge,
+  merge,
+  RandomFn,
+} from "https://deno.land/x/test_randomizing@0.2.1/mod.ts";
 ```
 
 ### Node.js ([npm.js](https://www.npmjs.com/package/test-randomizing))
@@ -47,7 +53,7 @@ import {
   DeepPartial,
   freezeMerge,
   RandomFn,
-} from "https://deno.land/x/test_randomizing@0.2.1/mod.ts";
+} from "https://x.nest.land/test_randomizing@0.4.0/mod.ts";
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 import { assertEquals } from "https://deno.land/std@0.119.0/testing/asserts.ts";
 
@@ -179,8 +185,4 @@ Copyright (c) 2021 Ti/o
 
 # Development
 
-Use alias `drake` to run all commands like `drake test` and `drake build`.
-
-```sh
-alias drake="deno run -A Drakefile.ts"
-```
+Use `vr` ([Velociraptor](https://velociraptor.run/)) to run all commands like `vr check` and `vr publish`.

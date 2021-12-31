@@ -1,0 +1,24 @@
+{
+  "$schema": "https://x.nest.land/eggs@0.3.10/src/schema.json",
+  "name": "test_randomizing",
+  "entry": "./mod.ts",
+  "description": "Test Randomizing helps you to build randomized objects or class instances for your tests.",
+  "homepage": "https://github.com/tiloio/test-randomizing",
+  "version": "0.4.0",
+  "releaseType": "minor",
+  "unstable": false,
+  "unlisted": false,
+  "files": [
+    "./LICENSE",
+    "./README.md",
+    "./src/**/*"
+  ],
+  "ignore": [
+    "./npm",
+    "./examples"
+  ],
+  "checkFormat": "deno fmt src",
+  "checkTests": "deno test src",
+  "checkInstallation": true,
+  "check": true
+}
