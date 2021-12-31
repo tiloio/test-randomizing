@@ -25,7 +25,7 @@ import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://deno.land/x/test_randomizing@0.2.1/mod.ts";
+} from "https://deno.land/x/test_randomizing@0.4.0/mod.ts";
 ```
 
 ### Node.js ([npm.js](https://www.npmjs.com/package/test-randomizing))
