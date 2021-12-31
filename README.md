@@ -9,16 +9,16 @@
  <a href="https://github.com/tiloio/test-randomizing/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/tiloio/test-randomizing?logo=github"></a>
  <a href="https://github.com/tiloio/test-randomizing"><img alt="GitHub stars" src="https://img.shields.io/github/stars/tiloio/test-randomizing?logo=github"></a>
  <a href="#badge"><img alt="vr scripts" src="https://badges.velociraptor.run/flat.svg"/></a>
- <a href="https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts"><img alt="deno docs"  src="https://doc.deno.land/badge.svg"></a>
- <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-brightgreen"/></a>
- <a href="LICENSE"><img alt="0 dependencies" src="https://img.shields.io/badge/dependencies-0-brightgreen"/></a>
+ <a href="https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts"><img alt="deno docs" src="https://img.shields.io/badge/Deno-doc-informational?logo=deno"/></a>
+ <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-success"/></a>
+ <a href="LICENSE"><img alt="0 dependencies" src="https://img.shields.io/badge/dependencies-0-success"/></a>
 </p>
 
 <p align="center"> 
-<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/JavaScript-all-brightgreen?logo=javascript">
-<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/TypeScript-%5E2.0.0-brightgreen?logo=typescript">
-<img alt="works with Node.js" src="https://img.shields.io/badge/Node.js-%5E12.0.0-brightgreen?logo=node.js">
-<img alt="works with Deno" src="https://img.shields.io/badge/Deno-%5E1.0.0-brightgreen?logo=deno">
+<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/JavaScript-all-success?logo=javascript">
+<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/TypeScript-%5E2.0.0-success?logo=typescript">
+<img alt="works with Node.js" src="https://img.shields.io/badge/Node.js-%5E12.0.0-success?logo=node.js">
+<img alt="works with Deno" src="https://img.shields.io/badge/Deno-%5E1.0.0-success?logo=deno">
 </p>
 
 <p align="center">
