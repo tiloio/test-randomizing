@@ -1,17 +1,35 @@
- [![nest badge](https://nest.land/badge.svg)](https://nest.land/package/test_randomizing)
- [![deno doc badge](https://doc.deno.land/badge.svg)](https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts)
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/test_randomizing)
+[![deno doc badge](https://doc.deno.land/badge.svg)](https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts)
+[![vr scripts](https://badges.velociraptor.run/flat.svg)](https://velociraptor.run)
 
-# test-randomizing
+<h1 align="center">
+  test-randomizing
+</h1>
+<p align="center">
+  Helps you to build randomized objects for your tests.
+</p>
 
-Test randomizing helps you to build randomized objects for your tests.
+<p align="center">
+ <a href="https://github.com/tiloio/test-randomizing/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/tiloio/test-randomizing?logo=github"></a>
+ <a href="https://github.com/tiloio/test-randomizing"><img alt="GitHub stars" src="https://img.shields.io/github/stars/tiloio/test-randomizing?logo=github"></a>
+ <a href="#badge"><img alt="vr scripts" src="https://badges.velociraptor.run/flat.svg"/></a>
+ <a href="https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts"><img alt="deno docs"  src="https://doc.deno.land/badge.svg"></a>
+ <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-brightgreen"/></a>
+ <a href="LICENSE"><img alt="0 dependencies" src="https://img.shields.io/badge/dependencies-0-brightgreen"/></a>
+</p>
 
-- ✅ 0 Dependencies
-- ✅ JavaScript
-- ✅ TypeScript
-- ✅ Deno
-- ✅ Node.js
-- ✅ esm
-- ✅ Browser
+<p align="center"> 
+<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/JavaScript-all-brightgreen?logo=javascript">
+<img alt="works in with esm, cjs..." src="https://img.shields.io/badge/TypeScript-%5E2.0.0-brightgreen?logo=typescript">
+<img alt="works with Node.js" src="https://img.shields.io/badge/Node.js-%5E12.0.0-brightgreen?logo=node.js">
+<img alt="works with Deno" src="https://img.shields.io/badge/Deno-%5E1.0.0-brightgreen?logo=deno">
+</p>
+
+<p align="center">
+  <a href="https://nest.land/package/test_randomizing"><img alt="published on nest.land" src="https://nest.land/badge.svg"></a>
+ <a href="https://deno.land/x/test_randomizing"><img alt="published on deno.land" src="https://img.shields.io/badge/PUBLISHED%20ON%20DENO.LAND-272727?logo=deno"/></a>
+ <a href="https://deno.land/x/test_randomizing"><img alt="published on npm" src="https://img.shields.io/badge/PUBLISHED%20ON%20NPM-272727?logo=npm"/></a>
+</p>
 
 ## 🏗 Install
 
@@ -186,6 +204,6 @@ MIT License
 
 Copyright (c) 2021 Ti/o
 
-# Development
+## Development
 
 Use `vr` ([Velociraptor](https://velociraptor.run/)) to run all commands like `vr check` and `vr publish`.
