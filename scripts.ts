@@ -17,13 +17,6 @@ const publishNpm = `cd ./npm && npm publish`;
 
 const check = {
   cmd: {
-    pll: [test, testDenoExample, [fmt, lint]],
-  },
-  gitHook: "pre-commit",
-};
-
-const checkAll = {
-  cmd: {
     pll: [test, testDenoExample, [fmt, lint], [buildNpm, testNpm]],
   },
   gitHook: "pre-commit",
@@ -42,7 +35,6 @@ export default <ScriptsConfiguration>{
     lint,
     fmt,
     check,
-    checkAll,
     buildNpm,
     publishNpm,
     releaseNpm: [check, buildNpm, testNpm, publishNpm],
