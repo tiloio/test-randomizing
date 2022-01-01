@@ -1,7 +1,6 @@
 import { DeepPartial } from "./deep-partial.ts";
-/**
- * Use to build random Functions like:
- *
+/** Use to build random Functions like:
+ * ```ts
  * import {
  *   DeepPartial,
  *   freezeMerge,
@@ -15,6 +14,7 @@ import { DeepPartial } from "./deep-partial.ts";
  *   lastName: faker.name.lastName(),
  *   companyName: faker.company.companyName(),
  * }, override);
+ * ```
  */
 export type RandomFn<OBJ_TYPE> = (
   override?: DeepPartial<OBJ_TYPE>,

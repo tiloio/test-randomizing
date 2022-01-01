@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/std@0.117.0/testing/asserts.ts";
 import { freezeMerge } from "./freeze-merge.ts";
 
-Deno.test("freezes the merged object", () => {
+Deno.test("freezeMerge freezes the merged object", () => {
   const sourceObject = {
     a: "a",
     b: "b",
@@ -16,7 +16,7 @@ Deno.test("freezes the merged object", () => {
   assert(Object.isFrozen(result));
 });
 
-Deno.test("freezes nested objects", () => {
+Deno.test("freezeMerge freezes nested objects", () => {
   const sourceObject = { a: { b: { c: "d1" } } };
   const overrideObject = { a: { b: { c: "d1" } } };
 
@@ -27,7 +27,7 @@ Deno.test("freezes nested objects", () => {
   assert(Object.isFrozen(result.a.b.c));
 });
 
-Deno.test("freezes nested arrays", () => {
+Deno.test("freezeMerge freezes nested arrays", () => {
   const sourceObject = {
     a: [0],
   };
@@ -38,7 +38,7 @@ Deno.test("freezes nested arrays", () => {
   assert(Object.isFrozen(result.a));
 });
 
-Deno.test("freezes strings", () => {
+Deno.test("freezeMerge freezes strings", () => {
   const sourceObject = {
     a: "Hello",
   };
@@ -49,7 +49,7 @@ Deno.test("freezes strings", () => {
   assert(Object.isFrozen(result.a));
 });
 
-Deno.test("freezes non overwridden values", () => {
+Deno.test("freezeMerge freezes non overwridden values", () => {
   const sourceObject = {
     a: 1,
     b: {

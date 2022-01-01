@@ -8,5 +8,6 @@ import { merge } from "./merge.ts";
  * @param override The object which has a subset of the properties of the source object.
  * @returns A deeply freezed object with all attributes from the override object and the rest of the soruce object.
  */
-export const freezeMerge = <T>(source: T, override?: DeepPartial<T>) =>
-  merge(source, override, true) as Readonly<T>;
+export function freezeMerge<T>(source: T, override?: DeepPartial<T>) {
+  return merge(source, override, { freeze: true }) as Readonly<T>;
+}

@@ -17,14 +17,14 @@ const publishNpm = `cd ./npm && npm publish`;
 
 const check = {
   cmd: {
-    pll: [test, testDenoExample, fmt, lint],
+    pll: [test, testDenoExample, [fmt, lint]],
   },
   gitHook: "pre-commit",
 };
 
 const checkAll = {
   cmd: {
-    pll: [test, testDenoExample, fmt, lint, [buildNpm, testNpm]],
+    pll: [test, testDenoExample, [fmt, lint], [buildNpm, testNpm]],
   },
   gitHook: "pre-commit",
 };

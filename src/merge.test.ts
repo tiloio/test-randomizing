@@ -6,7 +6,7 @@ import {
 import { createJestAsymmetricMatcher } from "./jest.ts";
 import { merge } from "./merge.ts";
 
-Deno.test("returns copy of sourceObject if overrideObject is undefined", () => {
+Deno.test("merge returns copy of sourceObject if overrideObject is undefined", () => {
   const sourceObject = {
     a: "a",
     b: "b",
@@ -16,7 +16,7 @@ Deno.test("returns copy of sourceObject if overrideObject is undefined", () => {
   assert(result !== sourceObject);
 });
 
-Deno.test("returns sourceObject if overrideObject is undefined", () => {
+Deno.test("merge returns sourceObject if overrideObject is undefined", () => {
   const sourceObject = {
     a: "a",
     b: "b",
@@ -26,7 +26,7 @@ Deno.test("returns sourceObject if overrideObject is undefined", () => {
   assertEquals(result, sourceObject);
 });
 
-Deno.test("returns overriden sourceObject if key value is null", () => {
+Deno.test("merge returns overriden sourceObject if key value is null", () => {
   const sourceObject = {
     a: "a",
     b: "b",
@@ -37,7 +37,7 @@ Deno.test("returns overriden sourceObject if key value is null", () => {
   assertEquals(result, { a: "a", b: null });
 });
 
-Deno.test("does not merge jest asymmetric matcher deeply", () => {
+Deno.test("merge does not merge jest asymmetric matcher deeply", () => {
   const sourceObject = {
     a: "a",
     b: createJestAsymmetricMatcher(),
@@ -62,7 +62,7 @@ Deno.test("does not merge jest asymmetric matcher deeply", () => {
   );
 });
 
-Deno.test("merges with undefined deeply", () => {
+Deno.test("merge merges with undefined deeply", () => {
   const result = merge(
     {
       a: "a",
@@ -135,7 +135,7 @@ Deno.test("merges deeply", () => {
   );
 });
 
-Deno.test("overrides arrays", () => {
+Deno.test("merge overrides arrays", () => {
   const result = merge(
     {
       a: "a",
@@ -166,7 +166,7 @@ Deno.test("overrides arrays", () => {
   );
 });
 
-Deno.test("overrides with undefined", () => {
+Deno.test("merge overrides with undefined", () => {
   const result = merge(
     {
       a: "a",
@@ -186,7 +186,7 @@ Deno.test("overrides with undefined", () => {
   );
 });
 
-Deno.test("does not freezes the result", () => {
+Deno.test("merge does not freezes the result", () => {
   const result = merge(
     {
       a: "a",
@@ -200,7 +200,7 @@ Deno.test("does not freezes the result", () => {
   assert(!Object.isFrozen(result));
 });
 
-Deno.test("does not freezes deeply", () => {
+Deno.test("merge does not freezes deeply", () => {
   const result = merge(
     {
       a: {
