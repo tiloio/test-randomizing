@@ -1,20 +1,15 @@
-import {
-  DeepPartial,
-  freezeMerge,
-  RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts"; 
-// or via deno.land "https://deno.land/x/test_randomizing@0.4.1/mod.ts"
+import { freezeMergeFactory } from "https://x.nest.land/test_randomizing@0.5.0/mod.ts";
+// or via deno.land "https://deno.land/x/test_randomizing@0.5.0/mod.ts"
 // or via Arweave "https://arweave.net/S_ht0jVRH-4Z-LmwEWSI5q0d6jgB8y-j2MLP73h_pnI/mod.ts"
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 import { assertEquals } from "https://deno.land/x/std@0.119.0/testing/asserts.ts";
 import { generateEmail } from "./generate-email.ts";
 
-const randomPerson: RandomFn<Person> = (override?: DeepPartial<Person>) =>
-  freezeMerge({
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    companyName: faker.company.companyName(),
-  }, override);
+const randomPerson = freezeMergeFactory<Person>({
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName(),
+  companyName: faker.company.companyName(),
+});
 
 Deno.test("consist of firstname.lastname@companyname.com", () => {
   const person = randomPerson({

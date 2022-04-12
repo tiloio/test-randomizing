@@ -4,8 +4,8 @@
   "entry": "./mod.ts",
   "description": "Test Randomizing helps you to build randomized objects or class instances for your tests.",
   "homepage": "https://github.com/tiloio/test-randomizing",
-  "version": "0.4.1",
-  "releaseType": "patch",
+  "version": "0.5.0",
+  "releaseType": "minor",
   "unstable": false,
   "unlisted": false,
   "files": [

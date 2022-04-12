@@ -2,77 +2,88 @@ import {
   assert,
   assertEquals,
 } from "https://deno.land/std@0.117.0/testing/asserts.ts";
+import { freezeMergeFactory } from "./freeze-merge-factory.ts";
 import { freezeMerge } from "./freeze-merge.ts";
 
-Deno.test("freezeMerge freezes the merged object", () => {
-  const sourceObject = {
-    a: "a",
-    b: "b",
-  };
-  const overrideObject = { b: "b1" };
+const functions: [string, typeof freezeMerge][] = [
+  ["freezeMerge", freezeMerge],
+  [
+    "freezeMergeFactory",
+    (source, override) => freezeMergeFactory(source)(override),
+  ],
+];
 
-  const result = freezeMerge(sourceObject, overrideObject);
+functions.forEach(([name, testFn]) => {
+  Deno.test(`${name} freezes the merged object`, () => {
+    const sourceObject = {
+      a: "a",
+      b: "b",
+    };
+    const overrideObject = { b: "b1" };
 
-  assert(Object.isFrozen(result));
-});
+    const result = testFn(sourceObject, overrideObject);
 
-Deno.test("freezeMerge freezes nested objects", () => {
-  const sourceObject = { a: { b: { c: "d1" } } };
-  const overrideObject = { a: { b: { c: "d1" } } };
+    assert(Object.isFrozen(result));
+  });
 
-  const result = freezeMerge(sourceObject, overrideObject);
+  Deno.test(`${name} freezes nested objects`, () => {
+    const sourceObject = { a: { b: { c: "d1" } } };
+    const overrideObject = { a: { b: { c: "d1" } } };
 
-  assert(Object.isFrozen(result.a));
-  assert(Object.isFrozen(result.a.b));
-  assert(Object.isFrozen(result.a.b.c));
-});
+    const result = testFn(sourceObject, overrideObject);
 
-Deno.test("freezeMerge freezes nested arrays", () => {
-  const sourceObject = {
-    a: [0],
-  };
-  const overrideObject = { a: [1] };
+    assert(Object.isFrozen(result.a));
+    assert(Object.isFrozen(result.a.b));
+    assert(Object.isFrozen(result.a.b.c));
+  });
 
-  const result = freezeMerge(sourceObject, overrideObject);
+  Deno.test(`${name} freezes nested arrays`, () => {
+    const sourceObject = {
+      a: [0],
+    };
+    const overrideObject = { a: [1] };
 
-  assert(Object.isFrozen(result.a));
-});
+    const result = testFn(sourceObject, overrideObject);
 
-Deno.test("freezeMerge freezes strings", () => {
-  const sourceObject = {
-    a: "Hello",
-  };
-  const overrideObject = { a: "bye" };
+    assert(Object.isFrozen(result.a));
+  });
 
-  const result = freezeMerge(sourceObject, overrideObject);
+  Deno.test(`${name} freezes strings`, () => {
+    const sourceObject = {
+      a: "Hello",
+    };
+    const overrideObject = { a: "bye" };
 
-  assert(Object.isFrozen(result.a));
-});
+    const result = testFn(sourceObject, overrideObject);
 
-Deno.test("freezeMerge freezes non overwridden values", () => {
-  const sourceObject = {
-    a: 1,
-    b: {
-      c: { d: "Hello world" },
-    },
-  };
-  const overrideObject = { a: 2 };
+    assert(Object.isFrozen(result.a));
+  });
 
-  const result = freezeMerge(sourceObject, overrideObject);
+  Deno.test(`${name} freezes non overwridden values`, () => {
+    const sourceObject = {
+      a: 1,
+      b: {
+        c: { d: "Hello world" },
+      },
+    };
+    const overrideObject = { a: 2 };
 
-  assert(Object.isFrozen(result.b));
-  assert(Object.isFrozen(result.b.c));
-  assert(Object.isFrozen(result.b.c.d));
-});
+    const result = testFn(sourceObject, overrideObject);
 
-Deno.test("freezeMerge merges two objects", () => {
-  const sourceObject = {
-    a: "a",
-    b: "b",
-  };
-  const overrideObject = { b: "b1" };
+    assert(Object.isFrozen(result.b));
+    assert(Object.isFrozen(result.b.c));
+    assert(Object.isFrozen(result.b.c.d));
+  });
 
-  const result = freezeMerge(sourceObject, overrideObject);
+  Deno.test(`${name} merges two objects`, () => {
+    const sourceObject = {
+      a: "a",
+      b: "b",
+    };
+    const overrideObject = { b: "b1" };
 
-  assertEquals(result, { a: "a", b: "b1" });
+    const result = testFn(sourceObject, overrideObject);
+
+    assertEquals(result, { a: "a", b: "b1" });
+  });
 });

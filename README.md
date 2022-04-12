@@ -11,7 +11,7 @@
  <a href="#badge"><img alt="vr scripts" src="https://badges.velociraptor.run/flat.svg"/></a>
  <a href="https://doc.deno.land/https://deno.land/x/test_randomizing/mod.ts"><img alt="deno docs" src="https://img.shields.io/badge/Deno-doc-informational?logo=deno"/></a>
  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-success"/></a>
- <a href="LICENSE"><img alt="0 dependencies" src="https://img.shields.io/badge/dependencies-0-success"/></a>
+ <img alt="0 dependencies" src="https://img.shields.io/badge/dependencies-0-success"/>
 </p>
 
 <p align="center"> 
@@ -36,13 +36,15 @@ import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts";
+  freezeMergeFactory
+} from "https://x.nest.land/test_randomizing@0.5.0/mod.ts";
 // or
 import {
   freezeMerge,
   merge,
   RandomFn,
-} from "https://deno.land/x/test_randomizing@0.4.1/mod.ts";
+  freezeMergeFactory
+} from "https://deno.land/x/test_randomizing@0.5.0/mod.ts";
 ```
 
 ### Node.js ([npm.js](https://www.npmjs.com/package/test-randomizing))
@@ -58,19 +60,15 @@ yarn add --dev test-randomizing
 You can use test randomizing in JavaScript and TypeScript projects.
 
 We recommend using a library (like
-[faker.js](https://github.com/marak/Faker.js/) or deno port
-[deno_faker](https://deno.land/x/deno_faker@v1.0.3)) to create randomized
+[fakerjs](https://github.com/faker-js/faker) or deno
+[faker](https://cdn.skypack.dev/@faker-js/faker)) to create randomized
 objects.
 
 Deno example
 [`./examples/deno`](https://github.com/tiloio/test-randomizing/tree/main/examples/deno):
 
 ```typescript
-import {
-  DeepPartial,
-  freezeMerge,
-  RandomFn,
-} from "https://x.nest.land/test_randomizing@0.4.1/mod.ts";
+import { freezeMergeFactory } from "https://x.nest.land/test_randomizing@0.5.0/mod.ts";
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 import { assertEquals } from "https://deno.land/std@0.119.0/testing/asserts.ts";
 
@@ -91,12 +89,11 @@ type Person = {
 };
 
 // Test code
-const randomPerson: RandomFn<Person> = (override?: DeepPartial<Person>) =>
-  freezeMerge({
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    companyName: faker.company.companyName(),
-  }, override);
+const randomPerson = freezeMergeFactory<Person>({
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName(),
+  companyName: faker.company.companyName(),
+});
 
 Deno.test("consist of firstname.lastname@companyname.com", () => {
   const person = randomPerson({

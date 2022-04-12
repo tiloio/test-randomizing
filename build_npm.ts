@@ -4,6 +4,9 @@ await build({
   entryPoints: ["./mod.ts"],
   rootTestDir: "./src",
   outDir: "./npm",
+  shims: {
+    deno: true
+  },
   package: {
     // package.json properties
     name: "test-randomizing",
