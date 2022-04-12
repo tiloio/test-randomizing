@@ -24,7 +24,7 @@
 <p align="center">
   <a href="https://nest.land/package/test_randomizing"><img alt="published on nest.land" src="https://nest.land/badge.svg"></a>
  <a href="https://deno.land/x/test_randomizing"><img alt="published on deno.land" src="https://img.shields.io/badge/PUBLISHED%20ON%20DENO.LAND-272727?logo=deno"/></a>
- <a href="https://deno.land/x/test_randomizing"><img alt="published on npm" src="https://img.shields.io/badge/PUBLISHED%20ON%20NPM-272727?logo=npm"/></a>
+ <a href="https://www.npmjs.com/package/test-randomizing"><img alt="published on npm" src="https://img.shields.io/badge/PUBLISHED%20ON%20NPM-272727?logo=npm"/></a>
 </p>
 
 ## 🏗 Install
