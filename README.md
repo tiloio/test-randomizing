@@ -36,14 +36,14 @@ import {
   freezeMerge,
   merge,
   RandomFn,
-  freezeMergeFactory
+  freezeMergeFactory,
 } from "https://x.nest.land/test_randomizing@0.5.0/mod.ts";
 // or
 import {
   freezeMerge,
   merge,
   RandomFn,
-  freezeMergeFactory
+  freezeMergeFactory,
 } from "https://deno.land/x/test_randomizing@0.5.0/mod.ts";
 ```
 
@@ -60,12 +60,62 @@ yarn add --dev test-randomizing
 You can use test randomizing in JavaScript and TypeScript projects.
 
 We recommend using a library (like
-[fakerjs](https://github.com/faker-js/faker) or deno
+[faker-js/faker](https://github.com/faker-js/faker) or deno
 [faker](https://cdn.skypack.dev/@faker-js/faker)) to create randomized
 objects.
 
-Deno example
-[`./examples/deno`](https://github.com/tiloio/test-randomizing/tree/main/examples/deno):
+### `merge` - merges two objects into one
+
+```typescript
+function merge<T>(
+  sourceObject: T,
+  overrideObject?: DeepPartial<T>,
+  options?: MergeOptions
+): T;
+
+// merges
+merge({ sky: "blue", grass: "green" }, { sky: "red", sun: "yellow" });
+// results in { sky: 'red', grass: 'green', sun: 'yellow'};
+
+// merges deeply
+merge(
+  { grass: "green", sky: { night: "black", day: "grey" } },
+  { sky: { day: "blue" } }
+);
+// results in { grass: 'green', sky: { night: 'black', day: 'grey' }};
+
+// merges with undefined
+merge({ sky: undefined, grass: "green" }, { sky: "blue", sun: undefined });
+// results in { sky: 'blue', grass: 'green', sun: undefined };
+```
+
+### `freezeMerge` - merges two objects into one and freezes the result
+
+No diference to merge, only the result and all nested things are freezed with [`Object.freeze()`](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
+
+```typescript
+function freezeMerge<T>(source: T, override?: DeepPartial<T>): Readonly<T>;
+
+// deep freezes the result
+const freezedResult = freezeMerge({ sky: "blue" });
+freezedResult.sky = "grey"; // change not possible
+// results in { sky: 'blue' };
+```
+
+### `freezeMergeFactory` - creates a function which is used to create overriden things via freeze merge
+
+```typescript
+function freezeMergeFactory<T>(
+  source: T
+): (overrides?: DeepPartial<T>) => Readonly<T>;
+
+// creates a, we call it 'random', function
+const randomSky = freezeMergeFactory({ night: "black", day: "grey" });
+randomSky({ day: "blue" });
+// results in { night: 'black', day: 'blue };
+```
+
+### Deno example - [`./examples/deno`](https://github.com/tiloio/test-randomizing/tree/main/examples/deno):
 
 ```typescript
 import { freezeMergeFactory } from "https://x.nest.land/test_randomizing@0.5.0/mod.ts";
@@ -124,8 +174,7 @@ Deno.test("returns undefined if companyName is empty", () => {
 });
 ```
 
-Typescript Node.js example
-[`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts):
+### Typescript Node.js example - [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts):
 
 ```typescript
 import { DeepPartial, freezeMerge, RandomFn } from "test-randomizing";
@@ -149,11 +198,14 @@ type Person = {
 
 // Test code
 const randomPerson: RandomFn<Person> = (override?: DeepPartial<Person>) =>
-  freezeMerge({
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    companyName: faker.company.companyName(),
-  }, override);
+  freezeMerge(
+    {
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      companyName: faker.company.companyName(),
+    },
+    override
+  );
 
 test("consist of firstname.lastname@companyname.com", () => {
   const person = randomPerson({
@@ -184,7 +236,7 @@ test("returns undefined if companyName is empty", () => {
 });
 ```
 
-More complete examples in the `./examples` directory:
+### More complete examples in the `./examples` directory
 
 - NodeJS TypeScript
   [`./examples/nodejs-ts`](https://github.com/tiloio/test-randomizing/tree/main/examples/nodejs-ts)
